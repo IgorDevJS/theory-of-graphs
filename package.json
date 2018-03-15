@@ -1,0 +1,28 @@
+{
+  "name": "theory-of-graphs",
+  "version": "0.0.1",
+  "description": "A project to work with Theory of Graphs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorDevJS/theory-of-graphs.git"
+  },
+  "keywords": [
+    "theory",
+    "graphs",
+    "node",
+    "js",
+    "es6",
+    "html",
+    "css"
+  ],
+  "author": "Igor Gonçalves",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IgorDevJS/theory-of-graphs/issues"
+  },
+  "homepage": "https://github.com/IgorDevJS/theory-of-graphs#readme"
+}
