@@ -26,6 +26,8 @@
   },
   "homepage": "https://github.com/IgorDevJS/theory-of-graphs#readme",
   "devDependencies": {
-    "webpack": "^4.6.0"
-  }
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
+  },
+  "dependencies": {}
 }
