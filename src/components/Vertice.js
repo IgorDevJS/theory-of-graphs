@@ -1,15 +1,14 @@
-export class Vertice {
-    constructor() {
-        this.render();
-    }
+export default class Vertice {
+  constructor() {
+    this.init();
+  }
+  // init component
+  init() {
+    this.elem = document.createElement('div');
+  }
 
-    // init component
-    init() {
-        this.elem = document.createElement('div');
-    }
-
-    // set componente value
-    setValue(value) {
-        this.elem.innerHTML = value;
-    }
+  // set componente value
+  setValue(value) {
+    this.elem.innerHTML = value;
+  }
 }
