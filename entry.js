@@ -1,4 +1,4 @@
-import { Vertice } from './src/components/Vertice';
+import Vertice from './src/components/Vertice';
 
 const v1 = new Vertice();
 v1.setValue('Vertice');
