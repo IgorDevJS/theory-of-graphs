@@ -1,7 +1,24 @@
-$cor-principal: #00abd7;
+@import '../../themes/themes';
 
-div {
-   background-color: $cor-principal;
-   width: 20px;
-   height: 20px;
+.Vertice {
+   display: -webkit-box;
+   -webkit-box-pack: center;
+   -webkit-box-align: center;
+   background-color: $color-primary;
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+}
+
+.Vertice input {
+    display: -webkit-box;
+    text-align: center;
+    width: 80%;
+    border: none;
+    background: transparent;
+    outline-style: none;
+}
+
+.Vertice input:focus {
+    background: white;
 }
