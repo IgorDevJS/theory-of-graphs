@@ -11,4 +11,8 @@ export default class Vertice {
   setValue(value) {
     this.elem.innerHTML = value;
   }
+
+  render(container) {
+    container.appendChild(this.elem);
+  }
 }
