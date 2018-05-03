@@ -1,3 +1,14 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const config = {
+  mode: 'development',
+};
+
+const extractSass = new ExtractTextPlugin({
+  filename: 'style.css',
+  disable: config.mode === 'development',
+});
+
 module.exports = {
   entry: './entry.js',
   output: {
@@ -19,16 +30,27 @@ module.exports = {
     },
     {
       test: /\.scss$/,
-      use: [
-        {
-          loader: 'style-loader', // creates style nodes from JS strings
+      use: extractSass.extract({
+        use: [{
+          loader: 'css-loader',
+          options: {
+            // If you are having trouble with urls not resolving add this setting.
+            // See https://github.com/webpack-contrib/css-loader#url
+            url: false,
+            minimize: config.mode === 'production',
+            sourceMap: true,
+          },
         }, {
-          loader: 'css-loader', // translates CSS into CommonJS
-        }, {
-          loader: 'sass-loader', // compiles Sass to CSS
-        },
-      ],
+          loader: 'sass-loader',
+        }],
+        // use style-loader in development
+        fallback: 'style-loader',
+      }),
     }],
   },
-  mode: 'development',
+  plugins: [
+    extractSass,
+  ],
+  mode: config.mode,
+  devtool: 'source-map',
 };
