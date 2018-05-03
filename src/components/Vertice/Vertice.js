@@ -1,8 +1,16 @@
 import './Vertice.scss';
 
-export default class Vertice {
+import Component from '../Component/Component';
+
+export default class Vertice extends Component {
   constructor() {
+    super();
     this.init();
+  }
+
+  // set componente value
+  setValue(value) {
+    this.input.value = value;
   }
 
   // init component
@@ -11,15 +19,5 @@ export default class Vertice {
     this.elem.classList.add('Vertice');
     this.input = document.createElement('input');
     this.elem.appendChild(this.input);
-  }
-
-  // set componente value
-  setValue(value) {
-    this.input.value = value;
-  }
-
-  // render element in container received as param
-  render(container) {
-    container.appendChild(this.elem);
   }
 }
