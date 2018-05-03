@@ -16,20 +16,16 @@ export default class ToolPanel extends Component {
     this.configResizable();
   }
 
+  changeSide(side) {
+    this.inLeft = side === 'left';
+    this.interactElem.options.resize.edges.left = !this.inLeft;
+    this.interactElem.options.resize.edges.right = this.inLeft;
+    if (this.inLeft) this.elem.classList.add('in-left');
+    else this.elem.classList.remove('in-left');
+  }
+
   configResizable() {
-    interact(this.elem)
-      .draggable({
-        onmove: window.dragMoveListener,
-        restrict: {
-          restriction: 'parent',
-          elementRect: {
-            top: 0,
-            left: 0,
-            bottom: 1,
-            right: 1,
-          },
-        },
-      })
+    this.interactElem = interact(this.elem)
       .resizable({
         // resize from all edges and corners
         edges: {
@@ -58,21 +54,20 @@ export default class ToolPanel extends Component {
       .on('resizemove', (event) => {
         const { target } = event;
         let x = (parseFloat(target.getAttribute('data-x')) || 0);
-        let y = (parseFloat(target.getAttribute('data-y')) || 0);
 
         // update the element's style
         target.style.width = `${event.rect.width}px`;
-        target.style.height = `${event.rect.height}px`;
 
-        // translate when resizing from top or left edges
-        x += event.deltaRect.right;
-        y += event.deltaRect.top;
+        // translate when resizing from top or left or rigth edges
+        x += event.deltaRect[this.inLeft ? 'left' : 'right'];
 
-        target.style.webkitTransform = `translate(${x}px,${y}px)`;
-        target.style.transform = `translate(${x}px,${y}px)`;
+        target.style.webkitTransform = `translate(${x}px,0px)`;
+        target.style.transform = `translate(${x}px,0px)`;
 
         target.setAttribute('data-x', x);
-        target.setAttribute('data-y', y);
+      })
+      .on('tap', () => {
+        this.changeSide(this.inLeft ? 'right' : 'left');
       });
   }
 }
