@@ -5,11 +5,33 @@
   width: 300px;
   height: 100%;
   position: absolute;
-  right: 0; 
   top: 0;
-}
+  right: 0; 
+  border-left: 1px solid black;
+  
+  // class to component in left
+  &.in-left {
+    right: initial;
+    left: 0;
+    border-left: initial;
+    border-right: 1px solid black;
+  }
 
-.ToolPanel.in-left {
-  right: initial;
-  left: 0;
+  // class to container components
+  .container-components {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: lightcyan;
+    margin-top: 50px;
+
+    .container-vertice-sample {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .container-vertice-sample p {
+      margin: 10px 0px 0px 0px;
+    }
+  }
 }

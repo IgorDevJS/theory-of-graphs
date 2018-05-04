@@ -2,6 +2,7 @@ import interact from 'interactjs';
 
 import './ToolPanel.scss';
 import Component from '../Component/Component';
+import Vertice from '../Vertice/Vertice';
 
 export default class ToolPanel extends Component {
   constructor() {
@@ -10,8 +11,25 @@ export default class ToolPanel extends Component {
   }
 
   init() {
+    // create main element
     this.elem = document.createElement('div');
     this.elem.classList.add('ToolPanel');
+
+    // create container for Components
+    this.containerComponents = document.createElement('div');
+    this.containerComponents.classList.add('container-components');
+
+    // create Vertice to show on the panel
+    this.verticeSample = Vertice.verticeSample(() => {
+      console.log('to aqui');
+    });
+
+    // append verticeSample
+    this.containerComponents.appendChild(this.verticeSample);
+
+    // append container of components
+    this.elem.appendChild(this.containerComponents);
+
     // config component resizing
     this.configResizable();
   }
