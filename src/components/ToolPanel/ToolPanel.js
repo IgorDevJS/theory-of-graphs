@@ -30,9 +30,6 @@ export default class ToolPanel extends Component {
         // resize from all edges and corners
         edges: {
           left: true,
-          right: false,
-          bottom: false,
-          top: false,
         },
 
         // keep the edges inside the parent
@@ -44,6 +41,10 @@ export default class ToolPanel extends Component {
         // minimum size
         restrictSize: {
           min: {
+            width: 150,
+            height: '100%',
+          },
+          max: {
             width: 300,
             height: '100%',
           },
@@ -53,18 +54,9 @@ export default class ToolPanel extends Component {
       })
       .on('resizemove', (event) => {
         const { target } = event;
-        let x = (parseFloat(target.getAttribute('data-x')) || 0);
 
         // update the element's style
         target.style.width = `${event.rect.width}px`;
-
-        // translate when resizing from top or left or rigth edges
-        x += event.deltaRect[this.inLeft ? 'left' : 'right'];
-
-        target.style.webkitTransform = `translate(${x}px,0px)`;
-        target.style.transform = `translate(${x}px,0px)`;
-
-        target.setAttribute('data-x', x);
       })
       .on('tap', () => {
         this.changeSide(this.inLeft ? 'right' : 'left');
