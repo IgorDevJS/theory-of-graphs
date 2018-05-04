@@ -7,7 +7,11 @@
     "test": "./node_modules/mocha/bin/mocha test/**/*.spec.js --require babel-register --require ignore-styles",
     "test:tdd": "./node_modules/mocha/bin/mocha test/**/*.spec.js -R nyan --require babel-register --require ignore-styles --watch",
     "test:coverage": "node node_modules/nyc/bin/nyc.js npm test",
-    "lint": "node node_modules/eslint/bin/eslint.js src/**/*.js"
+    "lint": "node node_modules/eslint/bin/eslint.js src/**/*.js",
+    "build:dev": "node node_modules/webpack/bin/webpack.js --mode development",
+    "build:prod": "node node_modules/webpack/bin/webpack.js --mode production",
+    "serve": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "serve:watch": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --watch --open"
   },
   "repository": {
     "type": "git",
