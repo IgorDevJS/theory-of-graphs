@@ -1,24 +1,30 @@
 @import '../../themes/themes';
-
 .Vertice {
-   display: -webkit-box;
-   -webkit-box-pack: center;
-   -webkit-box-align: center;
-   background-color: $color-primary;
-   width: 50px;
-   height: 50px;
-   border-radius: 50%;
-}
-
-.Vertice input {
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  background-color: $color-primary;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  input {
     display: -webkit-box;
     text-align: center;
     width: 80%;
     border: none;
     background: transparent;
     outline-style: none;
-}
+    &:focus {
+      background: white;
+    }
+  }
 
-.Vertice input:focus {
-    background: white;
+  &.Vertice-Sample {
+      position: initial;
+  }
+
+  &.drop-active {
+      background-color: black;
+  }
 }
