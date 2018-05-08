@@ -4,19 +4,8 @@
   background-color: lightblue;
   width: 300px;
   height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0; 
   border-left: 1px solid black;
   
-  // class to component in left
-  &.in-left {
-    right: initial;
-    left: 0;
-    border-left: initial;
-    border-right: 1px solid black;
-  }
-
   // class to container components
   .container-components {
     display: flex;

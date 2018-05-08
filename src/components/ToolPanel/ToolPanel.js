@@ -20,9 +20,7 @@ export default class ToolPanel extends Component {
     this.containerComponents.classList.add('container-components');
 
     // create Vertice to show on the panel
-    this.verticeSample = Vertice.verticeSample(() => {
-      console.log('to aqui');
-    });
+    this.verticeSample = Vertice.verticeSample();
 
     // append verticeSample
     this.containerComponents.appendChild(this.verticeSample);
@@ -75,9 +73,6 @@ export default class ToolPanel extends Component {
 
         // update the element's style
         target.style.width = `${event.rect.width}px`;
-      })
-      .on('tap', () => {
-        this.changeSide(this.inLeft ? 'right' : 'left');
       });
   }
 }
