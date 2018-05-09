@@ -43,8 +43,8 @@ export default class Vertice extends Component {
             right: 1,
           },
         },
-        // enable autoScroll
-        autoScroll: true,
+        // disable autoScroll
+        autoScroll: false,
 
         // call this function on every dragmove event
         onmove(event) {
