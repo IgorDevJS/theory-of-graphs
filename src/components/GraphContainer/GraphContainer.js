@@ -3,6 +3,7 @@ import interact from 'interactjs';
 import './GraphContainer.scss';
 import Component from '../Component/Component';
 import Vertice from '../Vertice/Vertice';
+import ManageData from '../ManageData/ManageData';
 
 export default class GraphContainer extends Component {
   constructor() {
@@ -14,6 +15,7 @@ export default class GraphContainer extends Component {
   init() {
     this.elem = document.createElement('div');
     this.elem.classList.add('GraphContainer');
+    this.manageData = new ManageData();
   }
 
   configDropZone() {
@@ -57,6 +59,7 @@ export default class GraphContainer extends Component {
 
           // create new Vertice
           const v1 = new Vertice({ top: rect.top, left: rect.left });
+          this.manageData.pushVerticeData(v1);
           v1.value = '1';
           v1.render(this.elem);
         }

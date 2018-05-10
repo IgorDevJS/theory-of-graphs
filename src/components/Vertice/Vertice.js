@@ -2,6 +2,7 @@ import interact from 'interactjs';
 
 import './Vertice.scss';
 import Component from '../Component/Component';
+import ManageData from '../ManageData/ManageData';
 
 export default class Vertice extends Component {
   // create elem to show in the panel to listener hold event
@@ -89,6 +90,13 @@ export default class Vertice extends Component {
     this.input.value = v;
   }
 
+  configTap() {
+    interact(this.elem)
+      .on('tap', () => {
+        console.log(this.manageData.getVerticeData(this));
+      });
+  }
+
   // init component
   init() {
     // create main elem using static method
@@ -97,5 +105,7 @@ export default class Vertice extends Component {
     this.elem.style.left = `${this.opts.left}px`;
     this.input = document.createElement('input');
     this.elem.appendChild(this.input);
+    this.manageData = new ManageData();
+    this.configTap();
   }
 }
