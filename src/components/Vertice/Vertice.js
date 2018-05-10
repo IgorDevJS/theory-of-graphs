@@ -78,9 +78,15 @@ export default class Vertice extends Component {
     this.init();
   }
 
+  get value() {
+    return this.input.value;
+  }
+
   // set componente value
-  setValue(value) {
-    this.input.value = value;
+  set value(value) {
+    let v = value;
+    if (!v || typeof v !== 'string') v = '';
+    this.input.value = v;
   }
 
   // init component

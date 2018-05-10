@@ -57,7 +57,7 @@ export default class GraphContainer extends Component {
 
           // create new Vertice
           const v1 = new Vertice({ top: rect.top, left: rect.left });
-          v1.setValue('1');
+          v1.value = '1';
           v1.render(this.elem);
         }
       },
