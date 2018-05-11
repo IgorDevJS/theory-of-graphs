@@ -58,10 +58,10 @@ export default class GraphContainer extends Component {
           e.relatedTarget.setAttribute('data-y', 0);
 
           // create new Vertice
-          const v1 = new Vertice({ top: rect.top, left: rect.left });
-          this.manageData.pushVerticeData(v1);
-          v1.value = '1';
-          v1.render(this.elem);
+          const vertice = new Vertice({ top: rect.top, left: rect.left });
+          this.manageData.pushVerticeData(vertice);
+          vertice.render(this.elem);
+          vertice.focus();
         }
       },
       ondropdeactivate(event) {

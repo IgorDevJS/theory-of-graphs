@@ -106,6 +106,11 @@ export default class Vertice extends Component {
     this.bindEvents();
   }
 
+  // focus in input element
+  focus() {
+    this.input.focus();
+  }
+
   // bind events
   bindEvents() {
     interact(this.elem)
