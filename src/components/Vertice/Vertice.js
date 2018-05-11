@@ -49,7 +49,9 @@ export default class Vertice extends Component {
 
         // call this function on every dragmove event
         onmove(event) {
-          const { target } = event;
+          const {
+            target,
+          } = event;
           // keep the dragged position in the data-x/data-y attributes
           const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
           const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
@@ -90,13 +92,6 @@ export default class Vertice extends Component {
     this.input.value = v;
   }
 
-  configTap() {
-    interact(this.elem)
-      .on('tap', () => {
-        console.log(this.manageData.getVerticeData(this));
-      });
-  }
-
   // init component
   init() {
     // create main elem using static method
@@ -108,12 +103,16 @@ export default class Vertice extends Component {
     this.input = document.createElement('input');
     this.elem.appendChild(this.input);
     this.manageData = new ManageData();
-    this.configTap();
     this.bindEvents();
   }
 
   // bind events
   bindEvents() {
+    interact(this.elem)
+      .on('tap', () => {
+        console.log(this.manageData.getVerticeData(this));
+      });
+
     this.input.addEventListener('input', (e) => {
       // set new value in array of data
       this.manageData.setVerticeData(this, e.target.value);
