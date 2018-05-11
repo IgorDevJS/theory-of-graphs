@@ -29,4 +29,16 @@ export default class ManageData {
       return false;
     });
   }
+
+  // set Vertice data value passing the Vertice instance and value
+  setVerticeData(vertice, value) {
+    this.data.some((v) => {
+      const v1 = v;
+      if (v1.vertice === vertice) {
+        v1.value = value;
+        return true;
+      }
+      return false;
+    });
+  }
 }
