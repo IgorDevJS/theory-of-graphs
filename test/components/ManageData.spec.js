@@ -1,0 +1,45 @@
+import chai, { expect } from 'chai';
+import 'jsdom-global/register';
+
+import ManageData from './../../src/components/ManageData/ManageData';
+import Vertice from './../../src/components/Vertice/Vertice';
+
+describe('ManageData class test suit', () => {
+  const manageData = new ManageData();
+  describe('Smoke tests', () => {
+    it('should have init method', () => {
+      expect(manageData.init).to.exist;
+    });
+  });
+  
+  describe('init method', () => {
+    beforeEach(() => {
+      manageData.init();
+    });
+    it('should have data property', () => {
+      expect(manageData.data).to.exist;
+    });
+    it('should data property be an array', () => {
+      expect(Array.isArray(manageData.data)).to.be.true;
+    });
+  });
+
+  describe('pushVerticeData method', () => {
+    
+    it('should have pushVerticeData method', () => {
+      expect(manageData.pushVerticeData).to.exist;
+    });
+    it('should push an object in data property', () => {
+      const vertice = new Vertice();
+      var dataMock = {
+        name: '',
+        vertice,
+        value: vertice.value,
+      }
+      manageData.pushVerticeData(dataMock);
+      expect(manageData.data.length > 0).to.be.true;
+      expect(manageData.data[0].vertice).to.equal(dataMock);
+    });
+  });
+
+});
