@@ -11,7 +11,6 @@ export default class ManageData {
 
   init() {
     this.data = [];
-    window.data = this.data;
   }
 
   // push vertice element into array data
