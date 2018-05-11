@@ -107,5 +107,14 @@ export default class Vertice extends Component {
     this.elem.appendChild(this.input);
     this.manageData = new ManageData();
     this.configTap();
+    this.bindEvents();
+  }
+
+  // bind events
+  bindEvents() {
+    this.input.addEventListener('input', (e) => {
+      // set new value in array of data
+      this.manageData.setVerticeData(this, e.target.value);
+    });
   }
 }
