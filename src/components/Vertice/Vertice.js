@@ -77,7 +77,9 @@ export default class Vertice extends Component {
 
   constructor(opts) {
     super();
-    this.opts = opts;
+    this.opts = typeof opts === 'undefined' ? {} : opts;
+    this.opts.top = typeof this.opts.top === 'undefined' ? 0 : this.opts.top;
+    this.opts.left = typeof this.opts.left === 'undefined' ? 0 : this.opts.left;
     this.init();
   }
 
@@ -96,8 +98,6 @@ export default class Vertice extends Component {
   init() {
     // create main elem using static method
     this.elem = Vertice.createElem();
-    if (!this.opts.top) this.opts.top = 0;
-    if (!this.opts.left) this.opts.left = 0;
     this.elem.style.top = `${this.opts.top}px`;
     this.elem.style.left = `${this.opts.left}px`;
     this.input = document.createElement('input');
