@@ -1,4 +1,4 @@
-import chai, { expect } from 'chai';
+import { expect } from 'chai';
 import 'jsdom-global/register';
 
 import ToolPanel from './../../src/components/ToolPanel/ToolPanel';
@@ -10,7 +10,6 @@ describe('ToolPanel class test suit', () => {
       expect(toolPanel.init).to.exist;
     });
   });
-  
   describe('init method', () => {
     beforeEach(() => {
       toolPanel.init();
@@ -42,5 +41,5 @@ describe('ToolPanel class test suit', () => {
     it('should have interactElem property', () => {
       expect(toolPanel.interactElem).to.exist;
     });
-  });  
-});  
+  });
+});

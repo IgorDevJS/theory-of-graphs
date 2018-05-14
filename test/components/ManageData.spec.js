@@ -1,4 +1,4 @@
-import chai, { expect } from 'chai';
+import { expect } from 'chai';
 import 'jsdom-global/register';
 
 import ManageData from './../../src/components/ManageData/ManageData';
@@ -11,7 +11,6 @@ describe('ManageData class test suit', () => {
       expect(manageData.init).to.exist;
     });
   });
-  
   describe('init method', () => {
     beforeEach(() => {
       manageData.init();
@@ -20,26 +19,25 @@ describe('ManageData class test suit', () => {
       expect(manageData.data).to.exist;
     });
     it('should data property be an array', () => {
-      expect(Array.isArray(manageData.data)).to.be.true;
+      expect(manageData.data).to.be.an('Array');
     });
   });
 
   describe('pushVerticeData method', () => {
-    
     it('should have pushVerticeData method', () => {
       expect(manageData.pushVerticeData).to.exist;
     });
     it('should push an object in data property', () => {
       const vertice = new Vertice();
-      var dataMock = {
+      const dataMock = {
         name: '',
         vertice,
         value: vertice.value,
-      }
+      };
       manageData.pushVerticeData(dataMock);
-      expect(manageData.data.length > 0).to.be.true;
+      expect(manageData.data).to.be.an('Array');
+      expect(manageData.data).length.greaterThan(0);
       expect(manageData.data[0].vertice).to.equal(dataMock);
     });
   });
-
 });

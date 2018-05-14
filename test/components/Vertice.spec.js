@@ -1,4 +1,4 @@
-import chai, { expect } from 'chai';
+import { expect } from 'chai';
 import 'jsdom-global/register';
 
 import Vertice from './../../src/components/Vertice/Vertice';
@@ -11,7 +11,7 @@ describe('Vertice class test suit', () => {
       expect(vertice.init).to.exist;
     });
   });
-  
+
   describe('init method', () => {
     beforeEach(() => {
       vertice.init();
@@ -20,10 +20,10 @@ describe('Vertice class test suit', () => {
       expect(vertice.elem).to.exist;
     });
     it('should elem property be a div', () => {
-      expect(vertice.elem.tagName).to.equal("DIV");
+      expect(vertice.elem.tagName).to.equal('DIV');
     });
     it('should elem property have an input child', () => {
-      expect(vertice.elem.children[0].tagName).to.equal("INPUT");
+      expect(vertice.elem.children[0].tagName).to.equal('INPUT');
     });
     it('should have manageData property', () => {
       expect(vertice.manageData).to.exist;
@@ -31,6 +31,5 @@ describe('Vertice class test suit', () => {
     it('should manageData property be a ManageData instance', () => {
       expect(vertice.manageData instanceof ManageData).to.be.true;
     });
-  });  
-});  
-
+  });
+});
