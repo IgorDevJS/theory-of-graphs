@@ -33,12 +33,12 @@ export default class Component {
         // minimum size
         restrictSize: {
           min: {
-            width: opts.minWidth,
-            height: opts.minHeight,
+            width: opts.minWidth ? opts.minWidth : 150,
+            height: opts.minHeight ? opts.minHeight : '100%',
           },
           max: {
-            width: opts.maxWidth,
-            height: opts.maxHeight,
+            width: opts.maxWidth ? opts.maxWidth : 300,
+            height: opts.maxHeight ? opts.maxHeight : '100%',
           },
         },
 
