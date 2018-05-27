@@ -1,0 +1,12 @@
+@import '../../themes/themes';
+
+.VerticePanel {
+  background-color: lightblue;
+  width: 100px;
+  height: 100%;
+  border-right: 1px solid black;
+
+  &.hidden {
+    display: none;
+  }
+}
