@@ -95,7 +95,7 @@ export default class Vertice extends Component {
   configTap() {
     interact(this.elem)
       .on('tap', () => {
-        console.log(this.manageData.getVerticeData(this));
+        this.manageData.showDataVertice(this);
       });
   }
 
