@@ -3,6 +3,7 @@ import Component from '../Component/Component';
 import GraphContainer from '../GraphContainer/GraphContainer';
 import ToolPanel from '../ToolPanel/ToolPanel';
 import VerticePanel from '../VerticePanel/VerticePanel';
+import ManageData from '../ManageData/ManageData';
 
 export default class MainContainer extends Component {
   constructor() {
@@ -17,6 +18,8 @@ export default class MainContainer extends Component {
     // create new VerticePanel
     const verticePanel = new VerticePanel();
     verticePanel.render(this.elem);
+    this.manageData = new ManageData();
+    this.manageData.verticePanel = verticePanel;
 
     // create new GraphContainer
     const graphContainer = new GraphContainer();
