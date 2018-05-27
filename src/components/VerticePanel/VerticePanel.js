@@ -50,8 +50,6 @@ export default class VerticePanel extends Component {
   showData(data) {
     this.dataVertice = data;
     this.valueInput.value = this.dataVertice.value;
-    console.log(this.dataVertice);
-
     this.show();
   }
 
