@@ -1,3 +1,5 @@
+import VerticePanel from '../VerticePanel/VerticePanel';
+
 let instance = null;
 
 export default class ManageData {
@@ -5,6 +7,9 @@ export default class ManageData {
     // construct a singleton
     if (instance) return instance;
     instance = this;
+
+    // get instance of VerticePanel
+    this.verticePanel = new VerticePanel();
 
     this.init();
   }
@@ -28,6 +33,11 @@ export default class ManageData {
       if (v.vertice === vertice) return v;
       return false;
     });
+  }
+
+  // show data of the Vertice passed in VerticePanel
+  showDataVertice(vertice) {
+    this.verticePanel.showData(this.getVerticeData(vertice));
   }
 
   // set Vertice data value passing the Vertice instance and value
