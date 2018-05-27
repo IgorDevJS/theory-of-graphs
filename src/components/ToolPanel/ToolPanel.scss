@@ -1,0 +1,26 @@
+@import '../../themes/themes';
+
+.ToolPanel {
+  background-color: lightblue;
+  width: 300px;
+  height: 100%;
+  border-left: 1px solid black;
+  
+  // class to container components
+  .container-components {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: lightcyan;
+    margin-top: 50px;
+
+    .container-vertice-sample {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .container-vertice-sample p {
+      margin: 10px 0px 0px 0px;
+    }
+  }
+}
