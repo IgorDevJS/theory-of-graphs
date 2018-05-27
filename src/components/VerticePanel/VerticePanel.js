@@ -1,9 +1,16 @@
 import './VerticePanel.scss';
 import Component from '../Component/Component';
 
+let instance = null;
+
 export default class VerticePanel extends Component {
   constructor() {
     super();
+
+    // construct a singleton
+    if (instance) return instance;
+    instance = this;
+
     this.init();
   }
 
