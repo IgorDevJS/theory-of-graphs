@@ -9,4 +9,21 @@
   &.hidden {
     display: none;
   }
+
+  .data-container {
+    margin-top: 50px;
+    height: 200px;
+    background-color: lightcyan;
+
+    .sub-container {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-box-align: center;
+      padding: 5px;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
 }
