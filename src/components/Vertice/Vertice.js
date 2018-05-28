@@ -21,14 +21,14 @@ export default class Vertice extends Component {
   }
 
   // create default Vertice element
-  static createElem() {
+  static createElem(newInstance) {
     const elem = document.createElement('div');
     elem.classList.add('Vertice');
-    Vertice.configDrag(elem);
+    Vertice.configDrag(elem, newInstance);
     return elem;
   }
 
-  static configDrag(elem) {
+  static configDrag(elem, newInstance) {
     // target elements with the "draggable" class
     interact(elem)
       .draggable({
@@ -66,10 +66,27 @@ export default class Vertice extends Component {
         },
         // call this function on every dragend event
         onend(event) {
-          const textEl = event.target.querySelector('p');
+          const {
+            target,
+          } = event;
+
+          const textEl = target.querySelector('p');
 
           if (textEl) {
             textEl.textContent = `moved a distance of ${(Math.sqrt(((event.pageX - event.x0) ** 2) + ((event.pageY - event.y0) ** 2))).toFixed(2)}px`;
+          }
+
+          // reset vertice sample if is static VerticeSample
+          if (!newInstance) {
+            setTimeout(() => {
+              // translate the element
+              target.style.webkitTransform = 'translate(0px, 0px)';
+              target.style.transform = 'translate(0px, 0px)';
+
+              // update the posiion attributes
+              target.setAttribute('data-x', 0);
+              target.setAttribute('data-y', 0);
+            });
           }
         },
       });
@@ -105,7 +122,7 @@ export default class Vertice extends Component {
   // init component
   init() {
     // create main elem using static method
-    this.elem = Vertice.createElem();
+    this.elem = Vertice.createElem(true);
     this.elem.style.top = `${this.opts.top}px`;
     this.elem.style.left = `${this.opts.left}px`;
     this.input = document.createElement('input');

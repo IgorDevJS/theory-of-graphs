@@ -52,11 +52,6 @@ export default class GraphContainer extends Component {
           // get dimension of vertice sample
           const rect = e.relatedTarget.getBoundingClientRect();
 
-          // reset vertice sample
-          e.relatedTarget.style.transform = 'translate(0px, 0px)';
-          e.relatedTarget.setAttribute('data-x', 0);
-          e.relatedTarget.setAttribute('data-y', 0);
-
           // create new Vertice
           const vertice = new Vertice({ top: rect.top, left: rect.left });
           this.manageData.pushVerticeData(vertice);
