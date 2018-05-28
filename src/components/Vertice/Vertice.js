@@ -98,6 +98,7 @@ export default class Vertice extends Component {
     interact(this.elem)
       .on('tap', () => {
         this.manageData.showDataVertice(this);
+        this.focus();
       });
   }
 
@@ -117,6 +118,7 @@ export default class Vertice extends Component {
   // focus in input element
   focus() {
     this.input.focus();
+    this.manageData.showDataVertice(this);
   }
 
   // bind events
