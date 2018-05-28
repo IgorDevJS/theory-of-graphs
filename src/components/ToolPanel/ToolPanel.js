@@ -1,5 +1,3 @@
-import interact from 'interactjs';
-
 import './ToolPanel.scss';
 import Component from '../Component/Component';
 import Vertice from '../Vertice/Vertice';
@@ -29,7 +27,7 @@ export default class ToolPanel extends Component {
     this.elem.appendChild(this.containerComponents);
 
     // config component resizing
-    this.configResizable();
+    super.configResizable();
   }
 
   changeSide(side) {
@@ -38,41 +36,5 @@ export default class ToolPanel extends Component {
     this.interactElem.options.resize.edges.right = this.inLeft;
     if (this.inLeft) this.elem.classList.add('in-left');
     else this.elem.classList.remove('in-left');
-  }
-
-  configResizable() {
-    this.interactElem = interact(this.elem)
-      .resizable({
-        // resize from all edges and corners
-        edges: {
-          left: true,
-        },
-
-        // keep the edges inside the parent
-        restrictEdges: {
-          outer: 'parent',
-          endOnly: true,
-        },
-
-        // minimum size
-        restrictSize: {
-          min: {
-            width: 150,
-            height: '100%',
-          },
-          max: {
-            width: 300,
-            height: '100%',
-          },
-        },
-
-        inertia: true,
-      })
-      .on('resizemove', (event) => {
-        const { target } = event;
-
-        // update the element's style
-        target.style.width = `${event.rect.width}px`;
-      });
   }
 }

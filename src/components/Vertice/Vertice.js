@@ -94,6 +94,13 @@ export default class Vertice extends Component {
     this.input.value = v;
   }
 
+  configTap() {
+    interact(this.elem)
+      .on('tap', () => {
+        this.manageData.showDataVertice(this);
+      });
+  }
+
   // init component
   init() {
     // create main elem using static method
