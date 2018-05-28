@@ -15,6 +15,7 @@
     border: none;
     background: transparent;
     outline-style: none;
+    text-overflow: ellipsis;
     &:focus {
       background: white;
     }
