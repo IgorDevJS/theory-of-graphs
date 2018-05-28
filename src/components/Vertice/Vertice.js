@@ -110,6 +110,7 @@ export default class Vertice extends Component {
     this.input = document.createElement('input');
     this.elem.appendChild(this.input);
     this.manageData = new ManageData();
+    this.configTap();
     this.bindEvents();
   }
 
@@ -120,11 +121,6 @@ export default class Vertice extends Component {
 
   // bind events
   bindEvents() {
-    interact(this.elem)
-      .on('tap', () => {
-        console.log(this.manageData.getVerticeData(this));
-      });
-
     this.input.addEventListener('input', (e) => {
       // set new value in array of data
       this.manageData.setVerticeData(this, e.target.value);
