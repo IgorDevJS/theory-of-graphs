@@ -1,5 +1,6 @@
 import './VerticePanel.scss';
 import Component from '../Component/Component';
+import ManageData from '../ManageData/ManageData';
 
 let instance = null;
 
@@ -15,6 +16,8 @@ export default class VerticePanel extends Component {
   }
 
   init() {
+    this.manageData = new ManageData();
+
     // create main element
     this.elem = document.createElement('div');
     this.elem.classList.add('VerticePanel');
@@ -43,12 +46,15 @@ export default class VerticePanel extends Component {
     // element init hidden
     this.hidden();
 
+    this.bindEvents();
+
     // config component resizing
     super.configResizable({ right: true, minWidth: 100, maxWidth: 150 });
   }
 
   showData(data) {
     this.dataVertice = data;
+    this.nameInput.value = this.dataVertice.name;
     this.valueInput.value = this.dataVertice.value;
     this.show();
   }
@@ -59,5 +65,16 @@ export default class VerticePanel extends Component {
 
   hidden() {
     if (!this.elem.classList.contains('hidden')) this.elem.classList.add('hidden');
+  }
+
+  bindEvents() {
+    // update name vertice
+    this.nameInput.addEventListener('input', (e) => {
+      this.dataVertice.name = e.target.value;
+    });
+
+    this.valueInput.addEventListener('input', (e) => {
+      this.manageData.setVerticeData(this.dataVertice.vertice, 'value', e.target.value);
+    });
   }
 }

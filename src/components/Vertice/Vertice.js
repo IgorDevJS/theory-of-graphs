@@ -125,7 +125,7 @@ export default class Vertice extends Component {
   bindEvents() {
     this.input.addEventListener('input', (e) => {
       // set new value in array of data
-      this.manageData.setVerticeData(this, e.target.value);
+      this.manageData.setVerticeData(this, 'value', e.target.value, true);
     });
   }
 }
