@@ -43,11 +43,15 @@ export default class VerticePanel extends Component {
     this.dataContainer.appendChild(this.valueContainer);
 
     // create switch button for isInitial
-    this.isInitial = new SwitchButton({ title: 'Inicial' });
+    this.isInitial = new SwitchButton({
+      title: 'Inicial',
+    });
     this.isInitial.render(this.dataContainer);
 
     // create switch button for isFinal
-    this.isFinal = new SwitchButton({ title: 'Final' });
+    this.isFinal = new SwitchButton({
+      title: 'Final',
+    });
     this.isFinal.render(this.dataContainer);
 
     this.elem.appendChild(this.dataContainer);
@@ -58,7 +62,11 @@ export default class VerticePanel extends Component {
     this.bindEvents();
 
     // config component resizing
-    super.configResizable({ right: true, minWidth: 100, maxWidth: 150 });
+    super.configResizable({
+      right: true,
+      minWidth: 100,
+      maxWidth: 150,
+    });
   }
 
   showData(data) {
