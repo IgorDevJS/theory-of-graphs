@@ -73,6 +73,8 @@ export default class VerticePanel extends Component {
     this.dataVertice = data;
     this.nameInput.value = this.dataVertice.name;
     this.valueInput.value = this.dataVertice.value;
+    this.isInitial.checked = this.dataVertice.isInitial;
+    this.isFinal.checked = this.dataVertice.isFinal;
     this.show();
   }
 
@@ -92,6 +94,14 @@ export default class VerticePanel extends Component {
 
     this.valueInput.addEventListener('input', (e) => {
       this.manageData.setVerticeData(this.dataVertice.vertice, 'value', e.target.value);
+    });
+
+    this.isInitial.change((value) => {
+      this.manageData.setVerticeData(this.dataVertice.vertice, 'isInitial', value);
+    });
+
+    this.isFinal.change((value) => {
+      this.manageData.setVerticeData(this.dataVertice.vertice, 'isFinal', value);
     });
   }
 }

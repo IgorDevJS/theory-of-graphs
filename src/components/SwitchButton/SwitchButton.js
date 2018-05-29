@@ -43,5 +43,17 @@ export default class SwitchButton extends Component {
     this.label = document.createElement('label');
     this.label.htmlFor = `switch-${this.opts.id}`;
     this.elem.appendChild(this.label);
+
+    this.bindEvents();
+  }
+
+  change(callback) {
+    this.callback = callback;
+  }
+
+  bindEvents() {
+    this.input.addEventListener('change', (e) => {
+      this.callback(e.target.checked);
+    });
   }
 }
