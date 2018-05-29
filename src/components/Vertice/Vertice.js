@@ -36,6 +36,7 @@ export default class Vertice extends Component {
         inertia: false,
         // keep the element within the area of it's parent
         restrict: {
+          restriction: newInstance ? 'parent' : undefined,
           endOnly: true,
           elementRect: {
             top: 0,
