@@ -1,6 +1,7 @@
 import './VerticePanel.scss';
 import Component from '../Component/Component';
 import ManageData from '../ManageData/ManageData';
+import SwitchButton from '../SwitchButton/SwitchButton';
 
 let instance = null;
 
@@ -40,6 +41,14 @@ export default class VerticePanel extends Component {
     this.valueInput = document.createElement('input');
     this.valueContainer.appendChild(this.valueInput);
     this.dataContainer.appendChild(this.valueContainer);
+
+    // create switch button for isInitial
+    this.isInitial = new SwitchButton({ title: 'Inicial' });
+    this.isInitial.render(this.dataContainer);
+
+    // create switch button for isFinal
+    this.isFinal = new SwitchButton({ title: 'Final' });
+    this.isFinal.render(this.dataContainer);
 
     this.elem.appendChild(this.dataContainer);
 
