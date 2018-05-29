@@ -24,6 +24,8 @@ export default class ManageData {
       name: '',
       vertice,
       value: vertice.value,
+      isInitial: false,
+      isFinal: false,
     });
   }
 
