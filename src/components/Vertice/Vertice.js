@@ -101,8 +101,14 @@ export default class Vertice extends Component {
     this.init();
   }
 
+  // get component value
   get value() {
     return this.input.value;
+  }
+
+  // get if component is final
+  get isFinal() {
+    return !!this.elem.classList.contains('isFinal');
   }
 
   // set componente value
@@ -110,6 +116,15 @@ export default class Vertice extends Component {
     let v = value;
     if (!v || typeof v !== 'string') v = '';
     this.input.value = v;
+  }
+
+  // set if component is final
+  set isFinal(value) {
+    if ((!value || typeof value !== 'string') && this.elem.classList.contains('isFinal')) {
+      this.elem.classList.remove('isFinal');
+    } else {
+      this.elem.classList.add('isFinal');
+    }
   }
 
   configTap() {
