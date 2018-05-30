@@ -48,4 +48,25 @@
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     transition: box-shadow .4s;
   }
+
+  // create isInitial style
+  &.isInitial:after {
+    content: '▲';
+    display: block;
+    margin-left: -100px;
+    margin-top: -8px;
+    font-size: 60px;
+    color: #00abd7;
+    position: absolute;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+
+  &.isInitial.drop-active:after {
+    text-shadow: 0 0px 20px rgba(0,0,0,0.30);
+    transition: text-shadow .4s;
+  }
 }
