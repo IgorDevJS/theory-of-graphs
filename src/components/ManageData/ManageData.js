@@ -51,7 +51,7 @@ export default class ManageData {
         v1[field] = value;
         // update data into verticePanel
         if (verticeCaller) this.verticePanel.showData(v1);
-        else v1.vertice.value = value;
+        else v1.vertice[field] = value;
         return true;
       }
       return false;
