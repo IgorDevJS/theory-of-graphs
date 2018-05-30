@@ -52,8 +52,13 @@ export default class GraphContainer extends Component {
           // get dimension of vertice sample
           const rect = e.relatedTarget.getBoundingClientRect();
 
+          const rectElem = this.elem.getBoundingClientRect();
+
           // create new Vertice
-          const vertice = new Vertice({ top: rect.top, left: rect.left });
+          const vertice = new Vertice({
+            top: rect.top - rectElem.top,
+            left: rect.left - rectElem.left,
+          });
           this.manageData.pushVerticeData(vertice);
           vertice.render(this.elem);
           vertice.focus();
