@@ -111,6 +111,11 @@ export default class Vertice extends Component {
     return !!this.elem.classList.contains('isFinal');
   }
 
+  // get if component is initial
+  get isInitial() {
+    return !!this.elem.classList.contains('isInitial');
+  }
+
   // set componente value
   set value(value) {
     let v = value;
@@ -124,6 +129,15 @@ export default class Vertice extends Component {
       this.elem.classList.remove('isFinal');
     } else {
       this.elem.classList.add('isFinal');
+    }
+  }
+
+  // set if component is initial
+  set isInitial(value) {
+    if ((!value || typeof value !== 'string') && this.elem.classList.contains('isInitial')) {
+      this.elem.classList.remove('isInitial');
+    } else {
+      this.elem.classList.add('isInitial');
     }
   }
 
