@@ -153,8 +153,8 @@ export default class Vertice extends Component {
   init() {
     // create main elem using static method
     this.elem = Vertice.createElem(true);
-    this.elem.style.top = `${this.opts.top}px`;
-    this.elem.style.left = `${this.opts.left}px`;
+    this.elem.style.marginTop = `${this.opts.top}px`;
+    this.elem.style.marginLeft = `${this.opts.left}px`;
     this.input = document.createElement('input');
     this.elem.appendChild(this.input);
     this.manageData = new ManageData();
