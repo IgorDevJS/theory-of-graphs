@@ -79,11 +79,23 @@ export default class VerticePanel extends Component {
   }
 
   disable() {
-    if (!this.elem.classList.contains('disable')) this.elem.classList.add('disable');
+    if (!this.elem.classList.contains('disable')) {
+      this.elem.classList.add('disable');
+      this.nameInput.disabled = true;
+      this.valueInput.disabled = true;
+      this.isInitial.disabled = true;
+      this.isFinal.disabled = true;
+    }
   }
 
   enable() {
-    if (this.elem.classList.contains('disable')) this.elem.classList.remove('disable');
+    if (this.elem.classList.contains('disable')) {
+      this.elem.classList.remove('disable');
+      this.nameInput.disabled = false;
+      this.valueInput.disabled = false;
+      this.isInitial.disabled = false;
+      this.isFinal.disabled = false;
+    }
   }
 
   show() {
