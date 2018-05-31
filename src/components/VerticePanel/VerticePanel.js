@@ -57,7 +57,7 @@ export default class VerticePanel extends Component {
     this.elem.appendChild(this.dataContainer);
 
     // element init hidden
-    this.hidden();
+    this.disable();
 
     this.bindEvents();
 
@@ -75,7 +75,15 @@ export default class VerticePanel extends Component {
     this.valueInput.value = this.dataVertice.value;
     this.isInitial.checked = this.dataVertice.isInitial;
     this.isFinal.checked = this.dataVertice.isFinal;
-    this.show();
+    this.enable();
+  }
+
+  disable() {
+    if (!this.elem.classList.contains('disable')) this.elem.classList.add('disable');
+  }
+
+  enable() {
+    if (this.elem.classList.contains('disable')) this.elem.classList.remove('disable');
   }
 
   show() {
