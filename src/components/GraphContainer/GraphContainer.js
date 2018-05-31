@@ -15,11 +15,16 @@ export default class GraphContainer extends Component {
   init() {
     this.elem = document.createElement('div');
     this.elem.classList.add('GraphContainer');
+
+    this.content = document.createElement('div');
+    this.content.classList.add('content');
+    this.elem.appendChild(this.content);
+
     this.manageData = new ManageData();
   }
 
   configDropZone() {
-    interact(this.elem).dropzone({
+    interact(this.content).dropzone({
       // only accept elements matching this CSS selector
       accept: '.Vertice, .Aresta',
       // Require a 75% element overlap for a drop to be possible
@@ -52,15 +57,15 @@ export default class GraphContainer extends Component {
           // get dimension of vertice sample
           const rect = e.relatedTarget.getBoundingClientRect();
 
-          const rectElem = this.elem.getBoundingClientRect();
+          const rectContent = this.content.getBoundingClientRect();
 
           // create new Vertice
           const vertice = new Vertice({
-            top: rect.top - rectElem.top,
-            left: rect.left - rectElem.left,
+            top: rect.top - rectContent.top,
+            left: rect.left - rectContent.left,
           });
           this.manageData.pushVerticeData(vertice);
-          vertice.render(this.elem);
+          vertice.render(this.content);
           vertice.focus();
         }
       },

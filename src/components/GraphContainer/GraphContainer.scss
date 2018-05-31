@@ -3,4 +3,10 @@
 .GraphContainer {
   background-color: lightcyan;
   -webkit-box-flex: 1;
+
+  .content {
+    background-color: white;
+    width: 800px;
+    height: 400px;
+  }
 }
