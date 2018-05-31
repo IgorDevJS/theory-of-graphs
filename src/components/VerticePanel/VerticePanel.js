@@ -97,19 +97,20 @@ export default class VerticePanel extends Component {
   bindEvents() {
     // update name vertice
     this.nameInput.addEventListener('input', (e) => {
-      this.dataVertice.name = e.target.value;
+      // change direct object because propagate into ManageData
+      if (this.dataVertice) this.dataVertice.name = e.target.value;
     });
 
     this.valueInput.addEventListener('input', (e) => {
-      this.manageData.setVerticeData(this.dataVertice.vertice, 'value', e.target.value);
+      if (this.dataVertice) this.manageData.setVerticeData(this.dataVertice.vertice, 'value', e.target.value);
     });
 
     this.isInitial.change((value) => {
-      this.manageData.setVerticeData(this.dataVertice.vertice, 'isInitial', value);
+      if (this.dataVertice) this.manageData.setVerticeData(this.dataVertice.vertice, 'isInitial', value);
     });
 
     this.isFinal.change((value) => {
-      this.manageData.setVerticeData(this.dataVertice.vertice, 'isFinal', value);
+      if (this.dataVertice) this.manageData.setVerticeData(this.dataVertice.vertice, 'isFinal', value);
     });
   }
 }
