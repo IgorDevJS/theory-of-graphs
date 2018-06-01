@@ -3,6 +3,7 @@
 .GraphContainer {
   background-color: lightcyan;
   -webkit-box-flex: 1;
+  overflow: hidden;
 
   .content {
     background-color: white;
