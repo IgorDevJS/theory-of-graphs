@@ -14,7 +14,10 @@ export default class GraphContainer extends Component {
     super();
     this.init();
     this.configDropZone();
-    this.configZoom();
+
+    setTimeout(() => {
+      this.configZoom();
+    });
   }
 
   init() {
@@ -94,9 +97,13 @@ export default class GraphContainer extends Component {
       zooming: true,
       minZoom: 0.5,
       maxZoom: 3,
-      scrollingComplete: function _NOOP() {},
+      scrollingComplete: function _NOOP() { },
     });
-    this.scroller.setPosition(0, 0);
+    const elemRect = this.elem.getBoundingClientRect();
+    this.scroller.setPosition(
+      elemRect.left + this.elem.clientLeft,
+      elemRect.top + this.elem.clientHeight,
+    );
 
     // Reflow handling
     this.reflowScroll();
@@ -129,7 +136,7 @@ export default class GraphContainer extends Component {
 
     function getDistancePinch(e) {
       return Math.sqrt(((e.touches[0].clientX - e.touches[1].clientX) *
-          (e.touches[0].clientX - e.touches[1].clientX)) +
+        (e.touches[0].clientX - e.touches[1].clientX)) +
         ((e.touches[0].clientY - e.touches[1].clientY) *
           (e.touches[0].clientY - e.touches[1].clientY)));
     }

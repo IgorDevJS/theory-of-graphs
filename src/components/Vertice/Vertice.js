@@ -31,6 +31,7 @@ export default class Vertice extends Component {
   static configDrag(elem, newInstance) {
     // target elements with the "draggable" class
     interact(elem)
+      .preventDefault(true)
       .draggable({
         // enable inertial throwing
         inertia: false,
