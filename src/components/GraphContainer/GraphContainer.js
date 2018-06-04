@@ -24,9 +24,13 @@ export default class GraphContainer extends Component {
     this.elem = document.createElement('div');
     this.elem.classList.add('GraphContainer');
 
+    this.container = document.createElement('div');
+    this.container.classList.add('container');
+    this.elem.appendChild(this.container);
+
     this.content = document.createElement('div');
     this.content.classList.add('content');
-    this.elem.appendChild(this.content);
+    this.container.appendChild(this.content);
 
     this.manageData = new ManageData();
   }
@@ -87,7 +91,7 @@ export default class GraphContainer extends Component {
   }
 
   configZoom() {
-    this.scroller = new Scroller(new ScrollRender(this.content, true), {
+    this.scroller = new Scroller(new ScrollRender(this.container, true), {
       scrollingX: true,
       scrollingY: true,
       animating: true,
@@ -99,10 +103,10 @@ export default class GraphContainer extends Component {
       maxZoom: 3,
       scrollingComplete: function _NOOP() { },
     });
-    const elemRect = this.elem.getBoundingClientRect();
+    const elemRect = this.container.getBoundingClientRect();
     this.scroller.setPosition(
-      elemRect.left + this.elem.clientLeft,
-      elemRect.top + this.elem.clientHeight,
+      elemRect.left + this.container.clientLeft,
+      elemRect.top + this.container.clientHeight,
     );
 
     // Reflow handling
@@ -111,7 +115,7 @@ export default class GraphContainer extends Component {
   }
 
   reflowScroll() {
-    const clientRect = this.elem.getBoundingClientRect();
+    const clientRect = this.container.getBoundingClientRect();
 
     this.scroller.options.img = this.content;
     const contentRect = this.content.getBoundingClientRect();
