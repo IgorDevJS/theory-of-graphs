@@ -74,6 +74,7 @@
   },
   "dependencies": {
     "interactjs": "^1.3.4",
+    "resize-sensor-es6": "git+https://github.com/WoodBettle/resize-sensor-es6.git",
     "zynga-scroller-woodbettle-es6": "git+https://github.com/WoodBettle/zynga-scroller-woodbettle-es6.git"
   }
 }
