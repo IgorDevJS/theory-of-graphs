@@ -3,6 +3,7 @@ import {
   Scroller,
   ScrollRender,
 } from 'zynga-scroller-woodbettle-es6';
+import ResizeSensor from 'resize-sensor-es6';
 
 import './GraphContainer.scss';
 import Component from '../Component/Component';
@@ -17,6 +18,7 @@ export default class GraphContainer extends Component {
 
     setTimeout(() => {
       this.configZoom();
+      this.bindEvents();
     });
   }
 
@@ -33,6 +35,12 @@ export default class GraphContainer extends Component {
     this.container.appendChild(this.content);
 
     this.manageData = new ManageData();
+  }
+
+  bindEvents() {
+    this.resizeSensor = new ResizeSensor(this.elem, () => {
+      this.reflowScroll();
+    });
   }
 
   configDropZone() {
@@ -101,13 +109,8 @@ export default class GraphContainer extends Component {
       zooming: true,
       minZoom: 0.5,
       maxZoom: 3,
-      scrollingComplete: function _NOOP() { },
+      scrollingComplete: function _NOOP() {},
     });
-    const elemRect = this.container.getBoundingClientRect();
-    this.scroller.setPosition(
-      elemRect.left + this.container.clientLeft,
-      elemRect.top + this.container.clientHeight,
-    );
 
     // Reflow handling
     this.reflowScroll();
@@ -116,6 +119,10 @@ export default class GraphContainer extends Component {
 
   reflowScroll() {
     const clientRect = this.container.getBoundingClientRect();
+    this.scroller.setPosition(
+      clientRect.left + this.container.clientLeft,
+      clientRect.top + this.container.clientHeight,
+    );
 
     this.scroller.options.img = this.content;
     const contentRect = this.content.getBoundingClientRect();
@@ -140,7 +147,7 @@ export default class GraphContainer extends Component {
 
     function getDistancePinch(e) {
       return Math.sqrt(((e.touches[0].clientX - e.touches[1].clientX) *
-        (e.touches[0].clientX - e.touches[1].clientX)) +
+          (e.touches[0].clientX - e.touches[1].clientX)) +
         ((e.touches[0].clientY - e.touches[1].clientY) *
           (e.touches[0].clientY - e.touches[1].clientY)));
     }
