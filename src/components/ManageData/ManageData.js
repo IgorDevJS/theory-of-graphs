@@ -15,12 +15,14 @@ export default class ManageData {
   }
 
   init() {
-    this.data = [];
+    this.data = {
+      vertices: [],
+    };
   }
 
   // push vertice element into array data
   pushVerticeData(vertice) {
-    this.data.push({
+    this.data.vertices.push({
       name: '',
       vertice,
       value: vertice.value,
@@ -31,7 +33,7 @@ export default class ManageData {
 
   // get Vertice data passing the Vertice instance
   getVerticeData(vertice) {
-    return this.data.find((v) => {
+    return this.data.vertices.find((v) => {
       if (v.vertice === vertice) return v;
       return false;
     });
@@ -45,7 +47,7 @@ export default class ManageData {
   // set Vertice data value passing the Vertice instance and value
   setVerticeData(vertice, f, value, verticeCaller) {
     const field = f || 'value';
-    this.data.some((v) => {
+    this.data.vertices.some((v) => {
       const v1 = v;
       if (v1.vertice === vertice) {
         v1[field] = value;
