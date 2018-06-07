@@ -79,10 +79,13 @@ export default class GraphContainer extends Component {
 
           const rectContent = this.content.getBoundingClientRect();
 
+          if (!this.lastZoom) this.lastZoom = 1;
           // create new Vertice
           const vertice = new Vertice({
-            top: rect.top - rectContent.top,
-            left: rect.left - rectContent.left,
+            top: ((rect.top - rectContent.top) / this.lastZoom) +
+              ((rect.height - (rect.height * this.lastZoom)) / (this.lastZoom * 2)),
+            left: ((rect.left - rectContent.left) / this.lastZoom) +
+              ((rect.width - (rect.width * this.lastZoom)) / (this.lastZoom * 2)),
           });
           this.manageData.pushVerticeData(vertice);
           vertice.render(this.content);
@@ -258,6 +261,7 @@ export default class GraphContainer extends Component {
       const mouseWheelFunction = (e) => {
         this.scroller.doMouseZoom(e.wheelDelta, e.timeStamp, e.pageX, e.pageY);
         this.pinchZoom = this.scroller.getValues().zoom;
+        this.lastZoom = this.pinchZoom;
       };
 
       this.elem.addEventListener('mousedown', mouseDownFunction, false);
