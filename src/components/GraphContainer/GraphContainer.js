@@ -183,6 +183,7 @@ export default class GraphContainer extends Component {
 
     function pinchEnd() {
       this.lastZoom = this.pinchZoom;
+      this.manageData.currentZoom = this.lastZoom;
     }
 
     if ('ontouchstart' in window) {
@@ -262,6 +263,7 @@ export default class GraphContainer extends Component {
         this.scroller.doMouseZoom(e.wheelDelta, e.timeStamp, e.pageX, e.pageY);
         this.pinchZoom = this.scroller.getValues().zoom;
         this.lastZoom = this.pinchZoom;
+        this.manageData.currentZoom = this.lastZoom;
       };
 
       this.elem.addEventListener('mousedown', mouseDownFunction, false);
