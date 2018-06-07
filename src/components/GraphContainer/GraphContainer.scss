@@ -12,6 +12,8 @@
     transform-origin: left top 0px;
     -webkit-transform-origin: left top;
     .content {
+      background-size: 50px 50px;
+      background-image: linear-gradient(to right, lightcyan 1px, transparent 1px), linear-gradient(to bottom, lightcyan 1px, transparent 1px);
       background-color: white;
       width: 1000px;
       height: 1500px;
