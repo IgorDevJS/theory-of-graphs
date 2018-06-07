@@ -3,6 +3,14 @@ import VerticePanel from '../VerticePanel/VerticePanel';
 let instance = null;
 
 export default class ManageData {
+  set currentZoom(zoom) {
+    this.data.zoom.currentZoom = zoom;
+  }
+
+  get currentZoom() {
+    return this.data.zoom.currentZoom;
+  }
+
   constructor() {
     // construct a singleton
     if (instance) return instance;
@@ -16,6 +24,9 @@ export default class ManageData {
 
   init() {
     this.data = {
+      zoom: {
+        currentZoom: 1,
+      },
       vertices: [],
     };
   }
