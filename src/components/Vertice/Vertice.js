@@ -21,14 +21,14 @@ export default class Vertice extends Component {
   }
 
   // create default Vertice element
-  static createElem(newInstance) {
+  static createElem(newInstance, manageData) {
     const elem = document.createElement('div');
     elem.classList.add('Vertice');
-    Vertice.configDrag(elem, newInstance);
+    Vertice.configDrag(elem, newInstance, manageData);
     return elem;
   }
 
-  static configDrag(elem, newInstance) {
+  static configDrag(elem, newInstance, manageData) {
     // target elements with the "draggable" class
     interact(elem)
       .preventDefault(true)
@@ -55,8 +55,9 @@ export default class Vertice extends Component {
             target,
           } = event;
           // keep the dragged position in the data-x/data-y attributes
-          const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-          const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+          const zoom = manageData ? manageData.currentZoom : 1;
+          const x = (parseFloat(target.getAttribute('data-x')) || 0) + (event.dx / zoom);
+          const y = (parseFloat(target.getAttribute('data-y')) || 0) + (event.dy / zoom);
 
           // translate the element
           target.style.webkitTransform = `translate(${x}px, ${y}px)`;
@@ -153,12 +154,12 @@ export default class Vertice extends Component {
   // init component
   init() {
     // create main elem using static method
-    this.elem = Vertice.createElem(true);
+    this.manageData = new ManageData();
+    this.elem = Vertice.createElem(true, this.manageData);
     this.elem.style.marginTop = `${this.opts.top}px`;
     this.elem.style.marginLeft = `${this.opts.left}px`;
     this.input = document.createElement('input');
     this.elem.appendChild(this.input);
-    this.manageData = new ManageData();
     this.configTap();
     this.bindEvents();
   }
