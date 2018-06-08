@@ -123,8 +123,8 @@ export default class GraphContainer extends Component {
   reflowScroll() {
     const clientRect = this.container.getBoundingClientRect();
     this.scroller.setPosition(
-      clientRect.left + this.container.clientLeft,
-      clientRect.top + this.container.clientHeight,
+      clientRect.left,
+      clientRect.top,
     );
 
     this.scroller.options.img = this.content;
