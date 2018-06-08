@@ -39,6 +39,7 @@ export default class GraphContainer extends Component {
 
   bindEvents() {
     this.resizeSensor = new ResizeSensor(this.elem, () => {
+      this.scroller.zoomTo(1);
       this.reflowScroll();
     });
   }
