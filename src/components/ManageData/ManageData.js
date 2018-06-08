@@ -1,12 +1,19 @@
 import VerticePanel from '../VerticePanel/VerticePanel';
+import Vertice from '../Vertice/Vertice';
 
 let instance = null;
 
 export default class ManageData {
+  /**
+   * Set currentZoom
+   */
   set currentZoom(zoom) {
     this.data.zoom.currentZoom = zoom;
   }
 
+  /**
+   * Get currentZoom
+   */
   get currentZoom() {
     return this.data.zoom.currentZoom;
   }
@@ -22,6 +29,9 @@ export default class ManageData {
     this.init();
   }
 
+  /**
+   * Init data
+   */
   init() {
     this.data = {
       zoom: {
@@ -31,7 +41,11 @@ export default class ManageData {
     };
   }
 
-  // push vertice element into array data
+  /**
+   * Push vertice element into array data
+   * @param {Vertice} vertice
+   * A instance of vertice
+   */
   pushVerticeData(vertice) {
     this.data.vertices.push({
       name: '',
@@ -42,7 +56,12 @@ export default class ManageData {
     });
   }
 
-  // get Vertice data passing the Vertice instance
+  /**
+   * Get Vertice data passing the Vertice instance
+   * @param {Vertice} vertice
+   * A instance of vertice
+   * @returns {(Object|Boolean)} Return data object or false
+   */
   getVerticeData(vertice) {
     return this.data.vertices.find((v) => {
       if (v.vertice === vertice) return v;
@@ -50,12 +69,26 @@ export default class ManageData {
     });
   }
 
-  // show data of the Vertice passed in VerticePanel
+  /**
+   * Show data of the Vertice passed in VerticePanel
+   * @param {Vertice} vertice
+   * A instance of vertice
+   */
   showDataVertice(vertice) {
     this.verticePanel.showData(this.getVerticeData(vertice));
   }
 
-  // set Vertice data value passing the Vertice instance and value
+  /**
+   * Set Vertice data value passing the Vertice instance and value
+   * @param {Vertice} vertice
+   * A instance of vertice
+   * @param {String} f
+   * Name of field for change
+   * @param {(String|Number)} value
+   * Value to enter in the field
+   * @param {Boolean} verticeCaller
+   * True to indicate that it was the vertice that called the function
+   */
   setVerticeData(vertice, f, value, verticeCaller) {
     const field = f || 'value';
     this.data.vertices.some((v) => {
