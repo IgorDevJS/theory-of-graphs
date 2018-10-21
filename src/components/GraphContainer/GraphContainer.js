@@ -39,7 +39,7 @@ export default class GraphContainer extends Component {
 
   bindEvents() {
     this.resizeSensor = new ResizeSensor(this.elem, () => {
-      this.scroller.zoomTo(1);
+      // this.scroller.zoomTo(1);
       this.reflowScroll();
     });
   }
@@ -122,19 +122,23 @@ export default class GraphContainer extends Component {
   }
 
   reflowScroll() {
-    const clientRect = this.container.getBoundingClientRect();
+    const currentZoom = this.scroller.getValues().zoom;
+
+    const elemRect = this.elem.getBoundingClientRect();
     this.scroller.setPosition(
-      clientRect.left,
-      clientRect.top,
+      elemRect.left,
+      elemRect.top,
     );
+
+    const clientRect = this.container.getBoundingClientRect();
 
     this.scroller.options.img = this.content;
     const contentRect = this.content.getBoundingClientRect();
 
-    const clientWidth = clientRect.width;
-    const clientHeight = clientRect.height;
-    const contentWidth = contentRect.width;
-    const contentHeight = contentRect.height;
+    const clientWidth = clientRect.width / currentZoom;
+    const clientHeight = clientRect.height / currentZoom;
+    const contentWidth = contentRect.width / currentZoom;
+    const contentHeight = contentRect.height / currentZoom;
     this.scroller.setDimensions(clientWidth, clientHeight, contentWidth, contentHeight);
   }
 
