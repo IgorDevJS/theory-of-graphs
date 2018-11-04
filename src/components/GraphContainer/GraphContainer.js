@@ -291,28 +291,5 @@ export default class GraphContainer extends Component {
 
       this.elem.addEventListener('dblclick', dblclickFunction);
     }
-
-    // $ionicGesture.on('doubletap', function (e) {
-    //   // only executes the action if it is not in the middle of an image transition
-    //   if (scrollerMain.getValues().left / widthView % 1 === 0) {
-    //     var scale = pinchZoom ? pinchZoom : lastZoom;
-    //     if (scale < maxScale) {
-    //       pinchZoom = maxScale;
-    //       inZoom = true;
-    //     } else {
-    //       pinchZoom = minScale;
-    //       inZoom = false;
-    //     }
-
-    //     lastZoom = pinchZoom
-
-    //     // zoom to the point where the user clicked
-    //     zooming = true;
-    //     arrayScrollers[currentIndex].zoomTo(
-    //        pinchZoom, true, e.gesture.center.pageX, e.gesture.center.pageY, function () {
-    //       zooming = false;
-    //     });
-    //   }
-    // }, $(divContainerView));
   }
 }
