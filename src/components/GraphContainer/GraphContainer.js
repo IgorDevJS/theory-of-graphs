@@ -132,7 +132,6 @@ export default class GraphContainer extends Component {
 
     const clientRect = this.container.getBoundingClientRect();
 
-    this.scroller.options.img = this.content;
     const contentRect = this.content.getBoundingClientRect();
 
     const clientWidth = clientRect.width / currentZoom;
