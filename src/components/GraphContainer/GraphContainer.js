@@ -39,7 +39,6 @@ export default class GraphContainer extends Component {
 
   bindEvents() {
     this.resizeSensor = new ResizeSensor(this.elem, () => {
-      // this.scroller.zoomTo(1);
       this.reflowScroll();
     });
   }
@@ -113,7 +112,7 @@ export default class GraphContainer extends Component {
       zooming: true,
       minZoom: 0.5,
       maxZoom: 3,
-      scrollingComplete: function _NOOP() {},
+      scrollingComplete: function _NOOP() { },
     });
 
     // Reflow handling
@@ -154,7 +153,7 @@ export default class GraphContainer extends Component {
 
     function getDistancePinch(e) {
       return Math.sqrt(((e.touches[0].clientX - e.touches[1].clientX) *
-          (e.touches[0].clientX - e.touches[1].clientX)) +
+        (e.touches[0].clientX - e.touches[1].clientX)) +
         ((e.touches[0].clientY - e.touches[1].clientY) *
           (e.touches[0].clientY - e.touches[1].clientY)));
     }
@@ -270,10 +269,27 @@ export default class GraphContainer extends Component {
         this.manageData.currentZoom = this.lastZoom;
       };
 
+      const dblclickFunction = (e) => {
+        const scale = this.pinchZoom ? this.pinchZoom : this.lastZoom;
+        if (scale < this.maxScale) {
+          this.pinchZoom = this.maxScale;
+        } else {
+          this.pinchZoom = this.minScale;
+        }
+
+        this.lastZoom = this.pinchZoom;
+
+        const elemRect = this.elem.getBoundingClientRect();
+        // zoom to the point where the user clicked
+        this.scroller.zoomTo(this.pinchZoom, true, e.pageX - elemRect.left, e.pageY - elemRect.top);
+      };
+
       this.elem.addEventListener('mousedown', mouseDownFunction, false);
       this.elem.addEventListener('mousemove', mouseMoveFunction, false);
       this.elem.addEventListener('mouseup', mouseUpFunction, false);
       this.elem.addEventListener('mousewheel', mouseWheelFunction, false);
+
+      this.elem.addEventListener('dblclick', dblclickFunction);
     }
 
     // $ionicGesture.on('doubletap', function (e) {
