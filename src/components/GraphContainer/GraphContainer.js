@@ -8,6 +8,7 @@ import ResizeSensor from 'resize-sensor-es6';
 import './GraphContainer.scss';
 import Component from '../Component/Component';
 import Vertice from '../Vertice/Vertice';
+import ZoomButtom from '../ZoomButton/ZoomButton';
 import ManageData from '../ManageData/ManageData';
 
 export default class GraphContainer extends Component {
@@ -33,6 +34,9 @@ export default class GraphContainer extends Component {
     this.content = document.createElement('div');
     this.content.classList.add('content');
     this.container.appendChild(this.content);
+
+    this.zoomButton = new ZoomButtom();
+    this.zoomButton.render(this.elem);
 
     this.manageData = new ManageData();
   }
