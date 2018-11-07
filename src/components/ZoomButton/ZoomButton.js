@@ -16,9 +16,11 @@ export default class ZoomButton extends Component {
 
     this.decreaseButton = document.createElement('div');
     this.decreaseButton.classList.add('decreaseButton');
+    this.decreaseButton.innerHTML = '<div class="iconZoom"><span class="zoom-inner"></span></div>';
 
     this.increaseButton = document.createElement('div');
     this.increaseButton.classList.add('increaseButton');
+    this.increaseButton.innerHTML = '<div class="iconZoom"><span class="zoom-inner"></span></div>';
 
     this.elem.appendChild(this.decreaseButton);
     this.elem.appendChild(this.increaseButton);
