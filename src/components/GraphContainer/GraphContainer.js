@@ -35,7 +35,9 @@ export default class GraphContainer extends Component {
     this.content.classList.add('content');
     this.container.appendChild(this.content);
 
-    this.zoomButton = new ZoomButtom();
+    this.zoomButton = new ZoomButtom({
+      callback: this.changeZoomLevel.bind(this),
+    });
     this.zoomButton.render(this.elem);
 
     this.manageData = new ManageData();
@@ -295,5 +297,19 @@ export default class GraphContainer extends Component {
 
       this.elem.addEventListener('dblclick', dblclickFunction);
     }
+  }
+
+  changeZoomLevel(increasing) {
+    const valueToChangeZoom = 0.5;
+    const scale = this.pinchZoom ? this.pinchZoom : this.lastZoom;
+    if (increasing && scale <= this.maxScale) {
+      this.pinchZoom = Math.min(scale + valueToChangeZoom, this.maxScale);
+    } else if (!increasing && scale >= this.minScale) {
+      this.pinchZoom = Math.max(scale - valueToChangeZoom, this.minScale);
+    }
+
+    this.lastZoom = this.pinchZoom;
+
+    this.scroller.zoomTo(this.pinchZoom, true);
   }
 }

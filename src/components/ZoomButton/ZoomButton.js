@@ -22,7 +22,26 @@ export default class ZoomButton extends Component {
     this.increaseButton.classList.add('increaseButton');
     this.increaseButton.innerHTML = '<div class="iconZoom"><span class="zoom-inner"></span></div>';
 
+    this.bindEvents();
+
     this.elem.appendChild(this.decreaseButton);
     this.elem.appendChild(this.increaseButton);
+  }
+
+  bindEvents() {
+    this.decreaseButton.addEventListener('click', () => {
+      if (this.opts.callback) this.opts.callback(false);
+    });
+    this.increaseButton.addEventListener('click', () => {
+      if (this.opts.callback) this.opts.callback(true);
+    });
+
+    // register dblclick event to stop propagation into elements
+    function dblclickFunction(e) {
+      e.stopPropagation();
+      return false;
+    }
+    this.decreaseButton.addEventListener('dblclick', dblclickFunction);
+    this.increaseButton.addEventListener('dblclick', dblclickFunction);
   }
 }
