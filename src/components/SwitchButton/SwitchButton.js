@@ -16,8 +16,16 @@ export default class SwitchButton extends Component {
     return this.input.checked;
   }
 
+  get disabled() {
+    return !!this.init.disabled;
+  }
+
   set checked(value) {
     this.input.checked = value;
+  }
+
+  set disabled(value) {
+    this.input.disabled = !!value;
   }
 
   init() {

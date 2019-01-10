@@ -6,6 +6,10 @@
   height: 100%;
   border-right: 1px solid black;
 
+  &.disable {
+    background-color: #f1f1f1;
+  }
+
   &.hidden {
     display: none;
   }
